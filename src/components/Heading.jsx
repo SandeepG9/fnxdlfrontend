@@ -18,18 +18,35 @@ const Heading = () => {
     async function handleFormData(event)
     {
         event.preventDefault()
-        setStudentData({firstName,lastName,email,phone,graduationYear,city,termsCondtion})
-        console.log(studenData)
-        await axios.post("https://finxdl.onrender.com/downloadBroucher",
-        studenData
-        )
-        .then((res)=>{
-            console.log(res.data)
-            studentData("")
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+        const studentData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        graduationYear,
+        city,
+        termsCondition,
+    };        
+            try {
+                const response = await axios.post(
+                    "https://finxdl.onrender.com/downloadBroucher",
+                    studentData
+                );
+                console.log("Server Response:", response.data);
+        
+                // Clear the form after successful submission
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPhone('');
+                setGraduationYear('');
+                setCity('');
+                setTermsCondition(false); // Reset checkbox or switch
+        
+            } catch (error) {
+                console.error("Error submitting form:", error);
+            }
+        }
     
     }
   return (
