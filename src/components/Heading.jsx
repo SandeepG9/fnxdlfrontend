@@ -25,6 +25,7 @@ const Heading = () => {
         )
         .then((res)=>{
             console.log(res.data)
+            studentData("")
         })
         .catch(error=>{
             console.log(error)
