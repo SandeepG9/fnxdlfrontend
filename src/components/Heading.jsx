@@ -20,7 +20,7 @@ const Heading = () => {
         event.preventDefault()
         setStudentData({firstName,lastName,email,phone,graduationYear,city,termsCondtion})
         console.log(studenData)
-        await axios.post("http://localhost:4000/downloadBroucher",
+        await axios.post("https://finxdl.onrender.com/downloadBroucher",
         studenData
         )
         .then((res)=>{
